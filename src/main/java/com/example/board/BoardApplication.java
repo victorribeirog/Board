@@ -1,6 +1,7 @@
 package com.example.board;
 
 import com.example.board.persistence.migration.MigrationStrategy;
+import com.example.board.ui.MainMenu;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ public class BoardApplication {
         try (var connection = getConnection()){
             new MigrationStrategy(connection).executeMigration();
         }
+        new MainMenu().execute();
     }
 
 }

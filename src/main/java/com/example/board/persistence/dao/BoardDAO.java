@@ -1,7 +1,8 @@
 package com.example.board.persistence.dao;
 
 import com.example.board.persistence.entity.BoardEntity;
-import com.mysql.jdbc.StatementImpl;
+
+import com.mysql.cj.jdbc.StatementImpl;
 import lombok.AllArgsConstructor;
 
 import java.sql.Connection;
@@ -14,7 +15,7 @@ public class BoardDAO {
     private final Connection connection;
 
     public BoardEntity insert(final BoardEntity entity) throws SQLException {
-        try (var statement = connection.prepareStatement("INSERT INTO board (name) VALUES (?)")) {
+        try (var statement = connection.prepareStatement("INSERT INTO BOARDS (name) VALUES (?)")) {
             statement.setString(1, entity.getName());
             statement.executeUpdate();
             if (statement instanceof StatementImpl impl){
